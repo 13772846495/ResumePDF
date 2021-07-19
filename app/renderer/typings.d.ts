@@ -19,9 +19,3 @@ declare module '*.ico' {
   export default ico;
 }
 declare module 'rc-redux-model';
-// declare module 'redux-logger' {
-//   export default reduxLogger;
-// }
-// declare module 'rc-redux-model' {
-//   export default RcReduxModel;
-// }

@@ -1,0 +1,45 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+.a4-box {
+  width: 51.25rem;
+  height: 72.5rem;
+  background-color: #fff;
+
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    /* 左部区域 */
+    .left {
+      width: 27%;
+      .avatar {
+        width: 100%;
+        height: 11.25rem;
+        text-align: center;
+        background-color: #eee;
+      }
+      .fillColor {
+        width: 100%;
+        height: 2rem;
+        background-color: rgb(250, 225, 4);
+      }
+      .baseData {
+        width: 100%;
+        height: calc(100% - 11.25rem - 2rem);
+        color: #fff;
+        background-color: #01426f;
+      }
+    }
+    /* 内容区域 */
+    .center {
+      width: 72%;
+      padding: 0 1.25rem;
+      box-sizing: border-box;
+      .listData {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
