@@ -1,3 +1,6 @@
+/**
+ * @description 路径页面信息维护
+ */
 const ROUTER = {
   root: '/',
   resume: '/resume'

@@ -1,0 +1,123 @@
+.slider {
+  width: 17.5rem;
+  font-size: .875rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: .375rem;
+  padding: 1rem;
+  .module {
+    font-size: .875rem;
+    .title {
+      font-size: .875rem;
+      line-height: 1.375rem;
+      color: #505667;
+      position: relative;
+      padding-left: .75rem;
+      margin-bottom: 1rem;
+      &.un-first {
+        margin-top: 1.5rem;
+      }
+      .line {
+        position: absolute;
+        top: .25rem;
+        left: 0;
+        width: .1875rem;
+        background-color: rgb(39, 41, 44);
+        height: .875rem;
+      }
+    }
+    .content {
+      .box {
+        height: 4.5rem;
+        margin-bottom: .75rem;
+        background-color: #fbfbfb;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 1.375rem;
+        border-radius: .5rem;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        &:hover {
+          .info {
+            .tips {
+              display: block;
+            }
+            .action {
+              display: inline-flex;
+            }
+          }
+        }
+        .info {
+          display: flex;
+          .icon {
+            width: 1rem;
+            height: 1rem;
+            margin-top: .125rem;
+            margin-right: .5rem;
+            background: url('../../../../../assets/icon/work.png') no-repeat;
+            background-size: cover;
+          }
+          .text {
+            .name {
+              font-size: .875rem;
+              color: #505667;
+            }
+            .summary {
+              font-size: .75rem;
+              color: #aeb2bd;
+              margin-top: .25rem;
+              word-break: keep-all;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+          .tips {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 3.75rem;
+            height: 1.25rem;
+            line-height: 1.25rem;
+            background-color: #505667;
+            font-size: .75rem;
+            color: #ffffff;
+            text-align: center;
+            display: none;
+            border-top-right-radius: .5rem;
+            border-bottom-left-radius: .5rem;
+          }
+          .action {
+            position: absolute;
+            right: 0;
+            top: 1.125rem;
+            width: 2.5rem;
+            display: none;
+            height: 1.25rem;
+            .edit {
+              width: 1rem;
+              height: 1rem;
+              background: url('../../../../../assets/icon/edit.png') no-repeat;
+              background-size: cover;
+              margin-right: .5rem;
+            }
+            .delete {
+              width: 1rem;
+              height: 1rem;
+              background: url('../../../../../assets/icon/delete.png') no-repeat;
+              background-size: cover;
+            }
+            .add {
+              width: 1rem;
+              height: 1rem;
+              background: url('../../../../../assets/icon/add.png') no-repeat;
+              background-size: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
