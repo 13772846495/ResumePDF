@@ -6,48 +6,66 @@ import './index.less';
 import MyScrollBox from '@common/components/MyScrollBox';
 import RESUME_TOOLBAR_LIST from '@common/constants/resume';
 import {onAddToolbar, onDeleteToolbar} from './utils';
+import { useDispatch } from 'react-redux';
 
 function ResumeToolbar() {
   const height = document.body.clientHeight;
 
-  const [addToolbalList, setAddToolbarList] = useState<TSResume.SliderItem[]>([]);
-  const [unAddToolbalList, setUnAddToolbarList] = useState<TSResume.SliderItem[]>([]);
+  const [addToolbarList, setAddToolbarList] = useState<TSResume.SliderItem[]>([]);
+  const [unAddToolbarList, setUnAddToolbarList] = useState<TSResume.SliderItem[]>([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if(RESUME_TOOLBAR_LIST.length > 0) {
-      let addToolbalList1: TSResume.SliderItem[] = [];
-      let unAddToolbalList1: TSResume.SliderItem[] = [];
+      let addToolbarList1: TSResume.SliderItem[] = [];
+      let unAddToolbarList1: TSResume.SliderItem[] = [];
       RESUME_TOOLBAR_LIST.forEach((s: TSResume.SliderItem) => {
         if(s.require)
-          addToolbalList1.push(s);
+          addToolbarList1.push(s);
         else
-          unAddToolbalList1.push(s);
+          unAddToolbarList1.push(s);
       })
-      setAddToolbarList(addToolbalList1);
-      setUnAddToolbarList(unAddToolbalList1);
+      setAddToolbarList(addToolbarList1);
+      setUnAddToolbarList(unAddToolbarList1);
+      changeResumeToolbarKeys(addToolbarList1.map((s: TSResume.SliderItem) => s.key));
     }
   }, []);
 
+  const changeResumeToolbarKeys = (moduleKeys: string[]) => {
+    if(moduleKeys.length > 0) {
+      dispatch({
+        type: 'templateModel/setStore',
+        payload: {
+          key: 'resumeToolbarKeys',
+          values: moduleKeys,
+        },
+      })
+    }
+  };
+
   // 添加模块
   const onAddSliderAction = (moduleToolbar: TSResume.SliderItem) => {
-    const nextAddSliderList = onAddToolbar(addToolbalList, moduleToolbar);
+    const nextAddSliderList = onAddToolbar(addToolbarList, moduleToolbar);
     setAddToolbarList(nextAddSliderList);
-    const nextUnAddSliderList = onDeleteToolbar(unAddToolbalList, moduleToolbar);
+    const nextUnAddSliderList = onDeleteToolbar(unAddToolbarList, moduleToolbar);
     setUnAddToolbarList(nextUnAddSliderList);
+    changeResumeToolbarKeys(nextAddSliderList.map((s: TSResume.SliderItem) => s.key));
   };
 
   // 删除模块
   const onDeleteSliderAction = (moduleToolbar: TSResume.SliderItem) => {
-    const nextAddSliderList = onDeleteToolbar(addToolbalList, moduleToolbar);
+    const nextAddSliderList = onDeleteToolbar(addToolbarList, moduleToolbar);
     setAddToolbarList(nextAddSliderList);
-    const nextUnAddSliderList = onAddToolbar(unAddToolbalList, moduleToolbar);
+    const nextUnAddSliderList = onAddToolbar(unAddToolbarList, moduleToolbar);
     setUnAddToolbarList(nextUnAddSliderList);
+    changeResumeToolbarKeys(nextAddSliderList.map((s: TSResume.SliderItem) => s.key));
   };
 
   return (
     <div styleName="slider">
       <MyScrollBox maxHeight={height - 180}>
-        {addToolbalList.length && (
+        {!!addToolbarList.length && (
           <div styleName="module">
               <div styleName="title un-first">
                   <span styleName="line" />
@@ -55,8 +73,8 @@ function ResumeToolbar() {
               </div>
               <div styleName="content">
                 {
-                  addToolbalList &&
-                  addToolbalList.map((toolbar: TSResume.SliderItem) => {
+                  addToolbarList &&
+                  addToolbarList.map((toolbar: TSResume.SliderItem) => {
                     return (
                       <div styleName="box" key={toolbar.key}>
                         <div styleName="info">
@@ -88,7 +106,7 @@ function ResumeToolbar() {
             </div>
           )
         }
-        {unAddToolbalList.length && (
+        {!!unAddToolbarList.length && (
           <div styleName="module">
               <div styleName="title un-first">
                   <span styleName="line" />
@@ -96,7 +114,7 @@ function ResumeToolbar() {
               </div>
               <div styleName="content">
                 {
-                  unAddToolbalList.map((toolbar: TSResume.SliderItem) => {
+                  unAddToolbarList.map((toolbar: TSResume.SliderItem) => {
                     return (
                       <div styleName="box" key={toolbar.key} onClick={() => onAddSliderAction(toolbar)}>
                         <div styleName="info">
