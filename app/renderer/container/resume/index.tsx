@@ -10,13 +10,12 @@ import ResumeToolbar from './ResumeToolbar';
 function Resume() {
   return (
       <div styleName="container">
-        {/* <div styleName="header">
+        <div styleName="header">
           <ResumeAction />
         </div>
         <div styleName="content">
           <ResumeContent />
-        </div> */}
-        <TemplateOne />
+        </div>
         <div styleName="toolbar">
           <ResumeToolbar />
         </div>
