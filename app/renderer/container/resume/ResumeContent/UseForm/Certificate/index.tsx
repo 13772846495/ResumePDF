@@ -36,11 +36,10 @@ function Certificate({ onClose }: IProps) {
               type="textarea"
               onChange={(e) => {
                 updateResumeHook<string>('certificate', e.target.value);
-                console.log('certificate is onchange!');
               }}
               rows={5}
               value={certificate || ''}
-              placeholder="互联网+大赛一等奖｜掘金大学骰王｜互联网喝酒大赛进步奖"
+              placeholder="互联网+大赛一等奖 | 掘金大学骰王 | 互联网喝酒大赛进步奖"
               allowClear={true}
             />
             <div styleName="tips"> * 多个证书以 | 分割</div>

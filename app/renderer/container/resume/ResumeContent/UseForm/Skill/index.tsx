@@ -7,11 +7,13 @@ import MyModal from '@common/components/MyModal';
 import MyInput from '@common/components/MyInput';
 import { useSelector } from 'react-redux';
 import RecommendSkill, { IRecommendSkill } from '@common/constants/skill';
+import useUpdateResumeHook from '@src/container/resume/ResumeContent/useUpdateResumeHook';
 
 interface IProps {
   onClose: () => void;
 }
 function Skill({ onClose }: IProps) {
+  const updateResumeHook = useUpdateResumeHook();
   const skill: string = useSelector((state: any) => state.resumeModel.skill);
 
   return (
@@ -35,6 +37,20 @@ function Skill({ onClose }: IProps) {
           <div styleName="right">
             <div styleName="action">
               {RecommendSkill.map((recommend: IRecommendSkill) => {
+                const skillButtonChange = () => {
+                  let str = skill;
+                  let strList = str.split(' | ');
+                  let index = strList.indexOf(recommend.label);
+                  if(index > -1) {
+                    strList.splice(index, 1);
+                    str = strList.join(' | ');
+                    updateResumeHook<string>('skill', str);
+                  } else {
+                    const value = `${skill}${skill ? ' | ' : ''}${recommend.label}`;
+                    updateResumeHook<string>('skill', value);
+                  }
+                };
+
                 return (
                   <div
                     styleName="label"
@@ -44,9 +60,7 @@ function Skill({ onClose }: IProps) {
                       borderColor: recommend?.styles?.font,
                       backgroundColor: recommend?.styles?.bg,
                     }}
-                    onClick={() => {
-                      const value = `${skill}${skill ? '｜' : ''}${recommend.label}`;
-                    }}
+                    onClick={skillButtonChange}
                   >
                     {recommend.label}
                   </div>
@@ -56,6 +70,7 @@ function Skill({ onClose }: IProps) {
             <MyInput
               type="textarea"
               onChange={(e) => {
+                updateResumeHook<string>('skill', e.target.value);
               }}
               rows={5}
               value={skill}

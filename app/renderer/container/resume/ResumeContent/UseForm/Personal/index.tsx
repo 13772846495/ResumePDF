@@ -17,7 +17,6 @@ function Personal({ onClose }: IProps) {
   const updateResumeHook = useUpdateResumeHook();
   const hobby: string = useSelector((state: any) => state.resumeModel.hobby);
   const base: TSResume.Base = useSelector((state: any) => state.resumeModel.base);
-  console.log(hobby);
   return (
     <MyModal.Dialog
       title="个人信息"
