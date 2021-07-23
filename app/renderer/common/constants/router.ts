@@ -25,7 +25,7 @@ export const ROUTER_ENTRY: TSRouter.Item[] = [
     text: '简历'
   },
   {
-    url: 'https://www.baidu.com/',
+    url: 'https://github.com/13772846495/ResumePDF',
     key: 'code',
     text: '源码'
   },
