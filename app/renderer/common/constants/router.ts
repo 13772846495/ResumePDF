@@ -15,7 +15,7 @@ export const ROUTER_KEY = {
 
 export const ROUTER_ENTRY: TSRouter.Item[] = [
   {
-    url: 'https://juejin.cn/book/6950646725295996940/section/6962938228357726241',
+    url: 'https://www.baidu.com/',
     key: 'intro',
     text: '介绍'
   },
@@ -25,7 +25,7 @@ export const ROUTER_ENTRY: TSRouter.Item[] = [
     text: '简历'
   },
   {
-    url: 'https://juejin.cn/book/6950646725295996940/section/6962938228357726241',
+    url: 'https://www.baidu.com/',
     key: 'code',
     text: '源码'
   },

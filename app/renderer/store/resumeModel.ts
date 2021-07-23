@@ -41,12 +41,12 @@ const resumeModel: TSRcReduxModel.Props<TSResume.IntactResume> = {
       '了解基于微信公众号应用开发，采用 Taro 开发微信小程序，具备良好的网络基础知识',
     ],
     evaluation:
-      '投身开源，rc-redux-model 库作者，SugarTurboS Club 开源组织负责人 | 掘金 lv3 博主，掘金文章 10w+ 阅读量，github blog 300+ star | 具备良好语言表达能力和沟通能力，能快速融入团队，适应新环境 | 具有代码洁癖，前后端分离，自我学习能力强，对新技术具有钻研精神',
+      '投身闭源，touch-fish 库作者，LetUsTouchFish Club 闭源组织负责人 | 掘金 Lv0 博主，掘金文章 0 阅读量，github blog 0 star | 无良好语言表达能力和沟通能力，无法快速融入团队，不能适应新环境 | 前后端不会，自我学习能力极差，对新技术具有放弃精神',
     evaluationList: [
-      '投身开源，rc-redux-model 库作者，SugarTurboS Club 开源组织负责人',
-      '掘金 lv3 博主，掘金文章 10w+ 阅读量，github blog 300+ star',
-      '具备良好语言表达能力和沟通能力，能快速融入团队，适应新环境。',
-      '具有代码洁癖，前后端分离，自我学习能力强，对新技术具有钻研精神',
+      '投身闭源，touch-fish 库作者，LetUsTouchFish Club 闭源组织负责人',
+      '掘金 Lv0 博主，掘金文章 0 阅读量，github blog 0 star',
+      '无良好语言表达能力和沟通能力，无法快速融入团队，不能适应新环境',
+      '前后端不会，自我学习能力极差，对新技术具有放弃精神',
     ],
     certificate: '全国英语四级证书 | 全国摸鱼总决赛三等奖 | 全国躺尸总决赛二等奖',
     certificateList: ['全国英语四级证书',

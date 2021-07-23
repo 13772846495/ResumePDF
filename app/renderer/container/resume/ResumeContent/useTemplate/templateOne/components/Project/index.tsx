@@ -2,35 +2,69 @@
  * @description 项目经历
  */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './index.less';
 
 function Project() {
+  const projectExperience: TSResume.ProjectExperience[] = useSelector(
+    (state: any) => state.resumeModel.projectExperience
+  );
+
   return (
     <div styleName="content">
       <p styleName="label">项目经历 Project</p>
       <ul styleName="list">
-        <li styleName="flex">
-          <div styleName="left">
-            <p>
-              <span>2021.07 - 2021.08</span>
-            </p>
-          </div>
-          <div styleName="right">
-            <p>
-              <span>学习制作 visResumeMook 可视化简历平台 - 前端工程师</span>
-            </p>
-          </div>
-          <div styleName="text">
-            <ul styleName="item-box">
-              <li styleName="item-content">
-                <span>通过学习 Electron + React Hooks 打造简历平台，只需输入一次信息，套用多份模版</span>
+        { !!projectExperience?.length &&
+          projectExperience?.map((experience: TSResume.ProjectExperience, index: number) => {
+            return (
+              <li styleName="flex" key={index}>
+                <div styleName="left">
+                  {(experience?.beginTime || experience?.endTime) &&
+                    <p>
+                      { experience?.beginTime && !experience?.endTime &&
+                        <span>{experience?.beginTime}</span>
+                      }
+                      { !experience?.beginTime && experience?.endTime &&
+                        <span>{experience?.endTime}</span>
+                      }
+                      { experience?.beginTime && experience?.endTime &&
+                        <span>{experience?.beginTime} - {experience?.endTime}</span>
+                      }
+                    </p>
+                  }
+                </div>
+                <div styleName="right">
+                  <p>
+                    { experience?.projectName && !experience?.post &&
+                      <span>{experience?.projectName}</span>
+                    }
+                    { !experience?.projectName && experience?.post &&
+                      <span>{experience?.post}</span>
+                    }
+                    { experience?.projectName && experience?.post &&
+                      <span>{experience?.projectName} - {experience.post}</span>
+                    }
+                  </p>
+                </div>
+                <div styleName="text">
+                  <ul styleName="item-box">
+                    { experience?.content &&
+                      experience?.parseContent &&
+                      experience?.parseContent?.length > 0 &&
+                      experience?.parseContent?.map((content: string, index: number) => {
+                        return (
+                          <li styleName="item-content" key={index}>
+                            <span>{content}</span>
+                          </li>
+                        );
+                      })
+                    }
+                  </ul>
+                </div>
               </li>
-              <li styleName="item-content">
-                <span>支持导出 PDF 简历文档</span>
-              </li>
-            </ul>
-          </div>
-        </li>
+            );
+          })
+        }
       </ul>
     </div>
   );

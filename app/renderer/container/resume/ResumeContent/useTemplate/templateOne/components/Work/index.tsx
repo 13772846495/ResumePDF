@@ -3,22 +3,30 @@
  */
 import './index.less';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Work() {
+  const workExperience: TSResume.WorkExperience[] = useSelector((state: any) => state.resumeModel.workExperience);
   return (
     <div styleName="content">
-      <p styleName="label">工作经历 Post</p>
+      <p styleName="label">工作经历 Work</p>
       <ul styleName="list">
-        <li styleName="flex">
-          <div styleName="left">
-            <p>2019.09-至今</p>
-            <p>前端工程师</p>
-          </div>
-          <div styleName="right">
-            <p>移动应用开发实验室</p>
-            <p>没啥成就，爱好摸鱼，人称摸鱼小达人 ~ </p>
-          </div>
-        </li>
+        { !!workExperience?.length &&
+          workExperience?.map((experience: TSResume.WorkExperience, index: number) => {
+            return (
+              <li styleName="flex" key={index}>
+                <div styleName="left">
+                  <p>{experience?.beginTime}-{experience?.endTime}</p>
+                  <p>{experience?.post}</p>
+                </div>
+                <div styleName="right">
+                  <p>{experience?.department}</p>
+                  <p>{experience?.content}</p>
+                </div>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
   );

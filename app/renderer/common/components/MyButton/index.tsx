@@ -13,7 +13,7 @@ export interface Button {
   /**
    * @description 宽度
    */
-  width?: string;
+  width?: number;
   /**
    * @description 自定义样式
    */

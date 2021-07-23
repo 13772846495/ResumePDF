@@ -14,15 +14,17 @@ interface IProps {
 }
 
 function WrapperExperience({ children, dataList, updateDataList }: IProps) {
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [currentItem, setCurrentItem] = useState<AdapterExperienceType>({});
-  const [experienceList, setExperienceList] = useState<AdapterExperienceType[]>([]);
+  // 维护当前状态的参数
+  const [currentIndex, setCurrentIndex] = useState(-1); // 当前条目索引
+  const [currentItem, setCurrentItem] = useState<AdapterExperienceType>({}); // 当前条目
+  const [experienceList, setExperienceList] = useState<AdapterExperienceType[]>([]); // 条目数据
 
   // 删除状态
   const [deleteModal, setDeleteModal] = useState({
-    show: false,
-    deleteIndex: -1,
+    show: false, // 弹框状态
+    deleteIndex: -1, // 删除条目索引
   });
+
   // 编辑状态
   const [editModal, setEditModal] = useState({
     showByCancel: false, // 编辑下的取消弹窗
