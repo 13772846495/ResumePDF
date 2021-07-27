@@ -1,4 +1,6 @@
-// 创建uid
+/**
+ * @description 创建uid
+ */
 export function createUID() {
   return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'
     .replace(/[xy]/g, (c) => {
@@ -7,4 +9,24 @@ export function createUID() {
       return v.toString(16);
     })
     .toUpperCase();
+}
+
+/**
+ * @description 将字符串数字转成整型数字
+ * @param {string} value
+ * @returns {number}
+ */
+export function transformStringToNumber(value: string): number {
+  return Number(value);
+}
+
+/**
+ * @description 剔除px
+ * @param {string | number | undefined} value
+ * @returns {string}
+ */
+export function reducePX(value: string | number | undefined): string {
+  if (!value) return '';
+  const _value = String(value);
+  return _value.replace('px', '');
 }

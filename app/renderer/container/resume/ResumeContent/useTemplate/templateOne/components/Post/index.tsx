@@ -16,6 +16,7 @@ function Post() {
       <ul styleName="list">
         { !!schoolExperience?.length &&
           schoolExperience?.map((experience: TSResume.SchoolExperience, index: number) => {
+            console.log();
             return (
               <li styleName="flex" key={index}>
                 <div styleName="left">
@@ -25,7 +26,7 @@ function Post() {
                 <div styleName="right">
                   <p>{experience?.department}</p>
                   <p>
-                    {experience?.content}
+                    {experience?.parseContent?.join('，')}
                   </p>
                 </div>
               </li>

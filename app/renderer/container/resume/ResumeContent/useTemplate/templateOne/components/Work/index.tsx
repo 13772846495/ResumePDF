@@ -21,7 +21,7 @@ function Work() {
                 </div>
                 <div styleName="right">
                   <p>{experience?.department}</p>
-                  <p>{experience?.content}</p>
+                  <p>{experience?.parseContent?.join('，')}</p>
                 </div>
               </li>
             );
