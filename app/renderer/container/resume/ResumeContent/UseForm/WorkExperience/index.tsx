@@ -13,13 +13,14 @@ interface IProps {
   onClose: () => void;
 }
 
+
 function WorkExperience({ onClose }: IProps) {
   const updateResumeHook = useUpdateResumeHook();
   const workExperience: TSResume.WorkExperience[] = useSelector((state: any) => state.resumeModel.workExperience);
-
   const updateDataList = (newDataList: AdapterExperienceType[]) => {
     updateResumeHook<AdapterExperienceType[]>('workExperience', newDataList);
   }
+
   return (
     <MyModal.Dialog
       title="工作经历"
