@@ -3,7 +3,7 @@
  */
 const ROUTER = {
   root: '/',
-  resume: '/resume',
+  resume: '/resume/:fromPath/:templateId/:templateIndex',
   templateList: '/templateList',
 };
 
@@ -12,7 +12,7 @@ export default ROUTER;
 export const ROUTER_KEY = {
   root: 'root',
   resume: 'resume',
-  templateList: '/templateList',
+  templateList: 'templateList',
 };
 
 export const ROUTER_ENTRY: TSRouter.Item[] = [

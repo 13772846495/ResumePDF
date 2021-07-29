@@ -1,3 +1,4 @@
+import useThemeActionHooks from '@src/hooks/useThemeActionHooks';
 import React from 'react';
 import { useHistory } from 'react-router';
 import './index.less';
@@ -5,9 +6,10 @@ import './index.less';
 function Header() {
   const history = useHistory();
   const goBack = () => history.push('/');
+  const [currentTheme] = useThemeActionHooks.useGetCurrentTheme();
 
   return (
-    <div styleName="header">
+    <div styleName="header" style={{backgroundColor: currentTheme?.backgroundColor, color: currentTheme?.fontColor}}>
       <div styleName="back" onClick={goBack}>
         返回
       </div>

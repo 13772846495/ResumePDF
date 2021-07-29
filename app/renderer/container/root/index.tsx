@@ -4,45 +4,43 @@ import { useHistory } from 'react-router';
 import Logo from '@assets/logo.png';
 import { shell } from 'electron';
 import { ROUTER_KEY, ROUTER_ENTRY } from '@common/constants/router';
-import { isHttpOrHttps } from '@src/common/utils/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { compilePath, isHttpOrHttps } from '@src/common/utils/router';
+import { useSelector } from 'react-redux';
+import MyTheme from '@common/components/MyTheme';
+import useThemeActionHooks from '@src/hooks/useThemeActionHooks';
 
 
 function Root() {
-  const History = useHistory();
-  const appName = useSelector((state: any) => state.globalModel.appName);
-
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     alert("3s后修改！！！");
-  //     dispatch({
-  //       type: 'globalModel/setStore',
-  //       payload: {
-  //         key: 'appName',
-  //         values: 'visResumeMook',
-  //       },
-  //     });
-  //   }, 3000);
-  // }, []);
-
-  // useEffect(() => {
-  //   alert('appName = '+ appName);
-  // }, [appName]);
+  const history = useHistory();
+  const selectTemplate: TSTemplate.Item = useSelector((state: any) => state.templateModel.selectTemplate);
+  const [currentTheme] = useThemeActionHooks.useGetCurrentTheme();
 
   const onRouterToLink = (router: TSRouter.Item) => {
     if( isHttpOrHttps(router.url) ) {
       shell.openExternal(router.url);
     } else {
-      History.push(router.url);
+      if(router.key !== ROUTER_KEY.resume) {
+        history.push(compilePath(router.url));
+      } else {
+        history.push(
+          compilePath(router.url, {
+          fromPath: ROUTER_KEY.root,
+          templateId: selectTemplate?.templateId,
+          templateIndex: selectTemplate?.templateIndex,
+          })
+        );
+      }
     }
   }
   return (
-    <div styleName="root">
+    <div styleName="root" style={{backgroundColor: currentTheme?.backgroundColor, color: currentTheme?.fontColor}}>
       <div styleName="container">
         <img src={Logo}/>
         <div styleName="title">VisResumeMook</div>
         <div styleName="tips">一个模板简历制作平台, 让你的简历更加出众 ~</div>
+        <div styleName="theme">
+          <MyTheme />
+        </div>
         <div styleName="action">
           {
             ROUTER_ENTRY.map((router: TSRouter.Item) => {

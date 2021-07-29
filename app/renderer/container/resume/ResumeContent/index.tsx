@@ -16,8 +16,8 @@ import SchoolExperience from './UseForm/SchoolExperience';
 import WorkExperience from './UseForm/WorkExperience';
 
 function ResumeContent() {
-  const HEADER_ACTION_HEIGHT = 96;
-  const height = document.body.clientHeight;
+  const HEADER_ACTION_HEIGHT = 92;
+  const [height, setHeight] = useState(0);
   const [formName, setFormName] = useState('');
   const [showFormModal, setShowFormModal] = useState(false);
 
@@ -27,6 +27,11 @@ function ResumeContent() {
       document.removeEventListener(MESSAGE_EVENT_NAME_MAPS.OPEN_FORM_MODAL, onReceive);
     }
   }, []);
+
+  useEffect(() => {
+    if(document.body && document.body.clientHeight > 0)
+      setHeight(document.body.clientHeight);
+  }, [document.body])
 
   /**
    * @description 接收订阅事件的传参
