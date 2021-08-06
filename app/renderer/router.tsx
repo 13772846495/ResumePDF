@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Redirect } from 'react-router-dom';
 import Root from '@src/container/root';
 import Resume from '@src/container/resume';
 import TemplateList from '@src/container/templateList';

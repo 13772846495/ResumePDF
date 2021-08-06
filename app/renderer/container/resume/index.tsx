@@ -11,7 +11,7 @@ import useThemeActionHooks from '@src/hooks/useThemeActionHooks';
 function Resume() {
   const [currentTheme] = useThemeActionHooks.useGetCurrentTheme();
   return (
-      <div styleName="container" style={{backgroundColor: currentTheme?.backgroundColor, color: currentTheme?.fontColor}}>
+      <div styleName="container" style={{backgroundColor: currentTheme?.backgroundColor}}>
         <div styleName="header">
           <ResumeAction />
         </div>

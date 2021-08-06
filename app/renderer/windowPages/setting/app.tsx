@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router from '@src/router';
-import store from './store';
+import store from '@src/store';
 import { Provider } from 'react-redux';
+import Setting from '.';
 
 function App() {
   return (
-  <Provider store={store}>
-    <Router />
-  </Provider>
+    <Provider store={store}>
+      <Setting />
+    </Provider>
   );
 }
 

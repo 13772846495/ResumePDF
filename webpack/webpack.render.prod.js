@@ -3,8 +3,8 @@ const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const devConfig = {
-  mode: 'development',
+const prodConfig = {
+  mode: 'production',
   entry: {
     // 👇 对应渲染进程的 app.jsx 入口文件
     index: path.resolve(__dirname, '../app/renderer/app.tsx'),
@@ -13,8 +13,7 @@ const devConfig = {
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist'),
-  },
-  module: {
+  },module: {
     rules: [
       {
         test: /\.css$/,
@@ -63,4 +62,4 @@ const devConfig = {
   ],
 };
 
-module.exports = webpackMerge.merge(baseConfig, devConfig);
+module.exports = webpackMerge.merge(baseConfig, prodConfig);

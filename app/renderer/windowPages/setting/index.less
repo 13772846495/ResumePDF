@@ -1,0 +1,43 @@
+.container {
+  padding: .75rem 1rem;
+  .label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 1rem 0;
+  }
+  .input {
+    height: 2.625rem;
+    line-height: 2.625rem;
+    position: relative;
+    border: .0625rem solid rgba(0, 0, 0, 0.07);
+    border-radius: .25rem;
+    .value {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: .875rem;
+      padding-left: .75rem;
+      width: 33.125rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .update-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 2.625rem;
+      line-height: 2.625rem;
+      width: 7.75rem;
+      text-align: center;
+      font-size: .875rem;
+      color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 0 .25rem .25rem 0;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.22);
+      }
+    }
+  }
+}

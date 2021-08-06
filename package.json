@@ -3,15 +3,18 @@
   "version": "0.0.1",
   "author": "GB",
   "description": "从0到1实现一款轻巧适用的简历平台桌面应用。",
-  "main": "./app/main/electron.js",
+  "main": "./dist/electron.js",
   "scripts": {
     "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/electron.js",
-    "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js"
+    "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js",
+    "build:main": "webpack --config ./webpack/webpack.main.prod.js",
+    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "classnames": "^2.3.1",
-    "electron": "^11.1.1",
     "html2canvas": "^1.1.4",
     "jspdf": "^2.3.1",
     "path-to-regexp": "^6.2.0",
@@ -41,6 +44,8 @@
     "babel-plugin-react-css-modules": "^5.2.6",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^3.0.0",
+    "electron-builder": "^22.11.7",
+    "electron": "^11.1.1",
     "eslint": "^7.30.0",
     "eslint-config-alloy": "^4.1.0",
     "eslint-config-prettier": "^8.3.0",
@@ -65,5 +70,41 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "build": {
+    "appId": "原神app",
+    "productName": "原神",
+    "copyright": "Copyright © 2019 ${author}",
+    "files": ["dist/**/*", "package.json", "node_modules/"],
+    "directories": {
+      "buildResources": "assets",
+      "output": "distAssets"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    }
   }
 }
